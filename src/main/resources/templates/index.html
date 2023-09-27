@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="header" th:replace="~{fragments/header :: headerFragment}">
+    <a th:href="@{/}">HOME</a>
+    <!-- 비 로그인일때만 , 로그인일때 X-->
+    <a th:href="@{/member/join}">회원가입</a>
+    <a th:href="@{/member/login}">로그인</a>
+    <!-- 로그인 후 , 비로그인 일 때 x-->
+    <a th:href="@{/member/logOut}">로그아웃</a>
+    <!-- 로그인 후 MEMBER, ADMIN -->
+    <a th:href="@{/board/write}">게시글작성</a>
+    <a th:href="@{/board/boardList}">게시글목록</a>
+    <!-- 로그인 후 SELLER, ADMIN -->
+    <a th:href="@{/shop}">쇼핑몰</a>
+    <!-- 로그인 후 ADMIN -->
+    <a th:href="@{/admin}">관리자페이지</a>
+</div>
+
+
+</body>
+</html>

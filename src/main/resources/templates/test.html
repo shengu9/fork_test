@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="test">
+  이메일: <span th:text="${myUserDetails.memberEntity.email}"></span> <br>
+  비밀번호: <span th:text="${myUserDetails.memberEntity.pw}"></span> <br>
+  권한: <span th:text="${myUserDetails.memberEntity.role}"></span> <br>
+  닉네임: <span th:text="${myUserDetails.memberEntity.nickName}"></span> <br>
+
+    이메일 처리:
+    <p th:if="${myUserDetails.memberEntity.email == 'ADMIN@mail.com'}">
+        수정, 삭제
+    </p>
+
+<!--    이메일 처리:-->
+<!--    <p th:if="${myUserDetails.memberEntity.email == boardDto.email}">-->
+<!--        수정, 삭제-->
+<!--    </p>-->
+</div>
+</body>
+</html>

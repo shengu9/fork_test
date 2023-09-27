@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div class="header" th:fragment="headerFragment">
+    <a th:href="@{/}">HOME</a>
+
+    <th:block sec:authorize="isAnonymous()">
+        <!-- 비 로그인일때만 , 로그인일때 X-->
+        <a th:href="@{/member/join}">회원가입</a>
+        <a th:href="@{/member/login}">로그인</a>
+    </th:block>
+
+    <th:block sec:authorize="isAuthenticated()">
+        <!-- 로그인 후 , 비로그인 일 때 x-->
+        <a th:href="@{/member/logOut}">로그아웃</a>
+        <span th:text="${#authentication.principal.username}"></span>
+    </th:block>
+
+    <th:block sec:authorize="hasAnyRole('MEMBER', 'ADMIN')">
+        <!-- 로그인 후 MEMBER, ADMIN -->
+        <a th:href="@{/board/write}">게시글작성</a>
+        <a th:href="@{/board/boardList}">게시글목록</a>
+    </th:block>
+
+    <th:block sec:authorize="hasAnyRole('SELLER', 'ADMIN')">
+        <!-- 로그인 후 MEMBER, ADMIN -->
+        <a th:href="@{/shop}">쇼핑몰페이지</a>
+    </th:block>
+
+    <th:block sec:authorize="hasAnyRole('ADMIN')">
+        <!-- 로그인 후 ADMIN -->
+        <a th:href="@{/admin}">관리자페이지</a>
+    </th:block>
+
+    <!-- 로그인 후 SELLER, ADMIN -->
+
+
+</div>
+</html>
+
+
+
+
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+<div class="header" th:replace="~{fragments/header :: headerFragment}"></div>
+<form th:action="@{/member/login}" method="post">
+    이메일: <input type="email" name="email" id="email"> <br>
+    비밀번호: <input type="password" name="pw" id="pw"> <br>
+    <input type="submit" value="로그인실행">
+</form>
+<div class="google">
+    <a th:href="@{/oauth2/authorization/google}">GOOGLE LOGIN</a>
+</div>
+
+</body>
+
+</html>

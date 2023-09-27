@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <title>write</title>
+</head>
+<body>
+<div class="header" th:replace="~{fragments/header :: headerFragment}"></div>
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>content</th>
+            <th>writer</th>
+            <th>createTime</th>
+            <th>USER</th>
+        </tr>
+        <tr th:each="board:${boardList}">
+            <td th:text="${board.id}"></td>
+            <td th:text="${board.title}"></td>
+            <td th:text="${board.content}"></td>
+            <td th:text="${board.writer}"></td>
+            <td th:text="${board.createTime}"></td>
+            <td th:text="${board.memberEntity.id}"></td>
+            <th:block th:if="${#authentication.principal.username == board.memberEntity.email}">
+                <td>
+                    <a th:href="@{/board/delete/{id}(id=${board.id})}">삭제</a>
+                    <a th:href="@{/board/update}">수정</a>
+                    <a th:href="@{/board/detail/{id}(id=${board.id})}">보기</a>
+                </td>
+            </th:block>
+
+            <th:block th:unless="${#authentication.principal.username == board.memberEntity.email}">
+                <td>
+                    <span> 본인글이 아닙니다. </span>
+                    <a th:href="@{/board/detail}">보기</a>
+                </td>
+            </th:block>
+
+        </tr>
+    </table>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <title>write</title>
+</head>
+<body>
+
+<div class="header" th:replace="~{fragments/header :: headerFragment}"></div>
+
+<div class="detail">
+    id: <span th:text="${boardDto.id}"></span>
+    hit: <span th:text="${boardDto.hit}"></span>
+    title: <span th:text="${boardDto.title}"></span>
+    content: <span th:text="${boardDto.content}"></span>
+    writer: <span th:text="${boardDto.writer}"></span>
+    email: <span th:text="${boardDto.memberEntity.email}"></span> <br>
+    <th:block th:if = "${#authentication.principal.username == boardDto.memberEntity.email}">
+        <span>
+            <a th:href="@{/board/delete}"></a>
+            <a th:href="@{/board/update}"></a>
+            <a th:href="@{/board/boardList}"></a>
+        </span>
+    </th:block>
+
+</div>
+
+</body>
+
+</html>
