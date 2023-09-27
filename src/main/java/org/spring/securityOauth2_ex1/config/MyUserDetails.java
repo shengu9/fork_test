@@ -43,7 +43,7 @@ public class MyUserDetails implements UserDetails, OAuth2User {
     }
     //password
     @Override
-    public String getPassword() {
+    public Stsdfsfsdfsdfsdfsfdsdfsdfsdfsdfsdfsdfsdfring getPassword() {
         return memberEntity.getPw();
     }
     //아이디
